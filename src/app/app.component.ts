@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FoqusItemService } from './_services/foqus-item.service';
+import { FoqusItem } from './_models/foqus-item';
+import { AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'foQus';
+
+  constructor(private authService: AuthService) { }
 }

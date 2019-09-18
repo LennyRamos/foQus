@@ -1,0 +1,19 @@
+<main>
+    <div>
+        <label>to-do:
+            <input #toDo />
+        </label>
+        <!-- (click) passes input value to add() and then clears the input -->
+        <button (click)="add(toDo.value); toDo.value=''">
+            add
+        </button>
+    </div>
+
+    <ul>
+        <li *ngFor="let item of foQusItems">
+            <input type="checkbox" />
+            <label>{{item.name}}</label>
+            <button class="delete" title="delete item" (click)="delete(item)">x</button>
+        </li>
+    </ul>
+</main>
