@@ -8,6 +8,7 @@ import { FoqusItem } from '../_models/foqus-item';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  isCollapsed = false;
   foQusItems: FoqusItem[];
 
   constructor(private foQusItemService: FoqusItemService) { }

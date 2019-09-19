@@ -8,9 +8,9 @@ import { FoqusItem } from '../_models/foqus-item';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const foQusItems = [
-      { id: 11, name: 'walk dog', desscription: 'I\'m just tryna yeet everywhere', isComplete: false },
-      { id: 12, name: 'feed fish', desscription: '', isComplete: true },
-      { id: 13, name: 'take out trash', desscription: '', isComplete: false }
+      { id: 11, name: 'walk dog', description: 'I\'m just tryna yeet everywhere', isComplete: false },
+      { id: 12, name: 'feed fish', description: '', isComplete: true },
+      { id: 13, name: 'take out trash', description: '', isComplete: false }
     ];
 
     return { foQusItems };
