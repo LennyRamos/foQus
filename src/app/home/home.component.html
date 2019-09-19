@@ -18,26 +18,53 @@
             </form>
 
             <!-- <ul>
-        <li *ngFor="let item of foQusItems">
-            <input type="checkbox" />
-            <label>{{item.name}}</label>
-            <button class="delete" title="delete item" (click)="delete(item)">x</button>
-        </li>
-    </ul> -->
+                <li *ngFor="let item of foQusItems">
+                    <input type="checkbox" />
+                    <label>{{item.name}}</label>
+                    <button class="delete" title="delete item" (click)="delete(item)">x</button>
+                </li>
+            </ul> -->
+
             <div *ngFor="let item of foQusItems; let i = index;">
-                <input type="checkbox" />
-                <a data-toggle="collapse" href="{{'#collapseExample'+item.id}}" role="button" aria-expanded="false"
-                    aria-controls="collapseExample">
-                    {{item.name}}
-                </a>
-                <button class="delete" title="delete item" (click)="delete(item)">x</button>
-                <div class="collapse" id="{{'collapseExample'+item.id}}">
-                    <div class="card card-body">
-                        {{!item.description ? 'no description' : item.description}}
+                <li *ngIf="!item.isComplete">
+                    <input type="checkbox" (change)="iscompleted(item)" />
+
+                    <a data-toggle="collapse" href="{{'#collapseExample'+item.id}}" role="button" aria-expanded="false"
+                        aria-controls="collapseExample">
+                        {{item.name}}
+                    </a>
+                    <button class="delete" title="delete item" (click)="delete(item)">x</button>
+                    <div class="collapse" id="{{'collapseExample'+item.id}}">
+                        <div class="card card-body">
+                            {{!item.description ? 'no description' : item.description}}
+                        </div>
                     </div>
-                </div>
+                </li>
+
             </div>
 
+
+        </div>
+
+        <div class="card-body">
+            <h4 class="card-title"> Done </h4>
+            <div *ngFor="let item of foQusItems; let i = index;">
+                    <li *ngIf="item.isComplete">
+                        <input type="checkbox" (change)="iscompleted(item)" checked />
+    
+                        <a data-toggle="collapse" href="{{'#collapseExample'+item.id}}" role="button" aria-expanded="false"
+                            aria-controls="collapseExample">
+                            {{item.name}}
+                        </a>
+                        <button class="delete" title="delete item" (click)="delete(item)">x</button>
+                        <div class="collapse" id="{{'collapseExample'+item.id}}">
+                            <div class="card card-body">
+                                {{!item.description ? 'no description' : item.description}}
+                            </div>
+                        </div>
+                    </li>
+    
+                </div>
         </div>
     </div>
 </main>
