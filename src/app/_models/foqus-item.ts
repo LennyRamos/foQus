@@ -3,4 +3,5 @@ export class FoqusItem {
     name: string;
     description: string;
     isComplete: boolean;
+    listId: number;
 }

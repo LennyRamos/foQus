@@ -7,13 +7,19 @@ import { FoqusItem } from '../_models/foqus-item';
 })
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
-    const foQusItems = [
-      { id: 11, name: 'walk dog', desscription: 'I\'m just tryna yeet everywhere', isComplete: false },
-      { id: 12, name: 'feed fish', desscription: '', isComplete: true },
-      { id: 13, name: 'take out trash', desscription: '', isComplete: false }
+    const foQusLists = [
+      { id: 1, name: 'grocery list' },
+      { id: 2, name: 'notes' },
+      { id: 3, name: 'to-do' },
     ];
 
-    return { foQusItems };
+    const foQusItems = [
+      { id: 11, name: 'apples', description: 'granny smiths ONLY', isComplete: false, listId: 1 },
+      { id: 12, name: 'bananas', description: 'Qty: 6', isComplete: true, listId: 1 },
+      { id: 13, name: 'carrots', description: 'stick em in Lenny\'s ass', isComplete: false, listId: 1 }
+    ];
+
+    return { foQusLists, foQusItems };
   }
 
   // Overrides the genId method to ensure that an item always has an id.
