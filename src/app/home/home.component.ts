@@ -28,14 +28,17 @@ export class HomeComponent implements OnInit {
       .subscribe(items => this.foQusItems = items);
   }
 
-  add(name: string): void {
-    name = name.trim();
-    if (!name) { return; }
+  // add(name: string): void {
+  //   name = name.trim();
+  //   if (!name) { return; }
 
-    this.foQusItems.push({ name } as FoqusItem);
-    console.log('new item added');
-  }
+  //   this.foQusItems.push({ name } as FoqusItem);
+  //   console.log('new item added');
+  // }
 
+  /**
+   * Used when adding a new entry into the task list
+   */
   onSubmit() {
     let name = this.foQusItemForm.value.itemName.trim();
     let description = this.foQusItemForm.value.itemDescription.trim();
@@ -46,8 +49,28 @@ export class HomeComponent implements OnInit {
     console.log('new item added');
   }
 
+  /**
+   * Delete item from task list
+   * @param item item to be removed
+   */
   delete(item: FoqusItem): void {
     this.foQusItems = this.foQusItems.filter(i => i !== item);
     console.log('item deleted');
+  }
+
+  /**
+   * Adding the task to Done section
+   * @param item the item in list that was completed
+   */
+  iscompleted(item: FoqusItem): void {
+
+    if (item.isComplete) {
+      item.isComplete = false;
+    } else {
+      item.isComplete = true;
+    }
+
+
+    console.log('item moved to done');
   }
 }
