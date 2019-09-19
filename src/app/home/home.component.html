@@ -1,19 +1,21 @@
 <main>
+    <app-foqus-list></app-foqus-list>
+
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">FoQus List</h4>
-            <div>
+            <form [formGroup]="foQusItemForm" (ngSubmit)="onSubmit()">
                 <label>task name:
-                    <input #taskName />
+                    <input type="text" formControlName="itemName" />
                 </label>
                 <label>task description:
-                    <input #taskDescription />
+                    <input type="text" formControlName="itemDescription" />
                 </label>
                 <!-- (click) passes input value to add() and then clears the input -->
-                <button (click)="add(toDo.value); toDo.value=''">
-                    add
+                <button type="submit">
+                    Add
                 </button>
-            </div>
+            </form>
 
             <!-- <ul>
         <li *ngFor="let item of foQusItems">
