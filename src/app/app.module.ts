@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -13,11 +13,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { FoqusListComponent } from './foqus-list/foqus-list.component';
+import { FoqusListsComponent } from './foqus-lists/foqus-lists.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'foquslist', component: FoqusListComponent },
+  { path: 'foquslist', component: FoqusListsComponent, canActivate: [AuthGuard] },
+  { path: 'foquslist/:id', component: FoqusListComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent }
 ];
 
@@ -26,7 +28,8 @@ const appRoutes: Routes = [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    FoqusListComponent
+    FoqusListComponent,
+    FoqusListsComponent
   ],
   imports: [
     BrowserModule,
