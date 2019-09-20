@@ -17,6 +17,7 @@ import { FoqusListComponent } from './foqus-list/foqus-list.component';
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
+  { path: 'foquslist', component: FoqusListComponent },
   { path: 'login', component: LoginComponent }
 ];
 
