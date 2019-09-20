@@ -16,7 +16,7 @@ export class InMemoryDataService implements InMemoryDbService {
 
     const foQusItems: FoqusItem[] = [
       { id: 11, name: 'apples', description: 'granny smiths ONLY', isComplete: false, listId: 1 },
-      { id: 12, name: 'bananas', description: 'Qty: 6', isComplete: true, listId: 1 },
+      { id: 12, name: 'bananas', description: 'Qty: 6', isComplete: false, listId: 1 },
       { id: 13, name: 'carrots', description: 'stick em in Lenny\'s ass', isComplete: false, listId: 1 }
     ];
 
