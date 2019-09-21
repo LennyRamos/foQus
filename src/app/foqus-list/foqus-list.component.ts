@@ -3,7 +3,8 @@ import { FoqusItem } from '../_models/foqus-item';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FoqusItemService } from '../_services/foqus-item.service';
 import { Location } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, Route, ActivatedRoute } from '@angular/router';
+import { FoqusListService } from '../_services/foqus-list.service';
 
 @Component({
   selector: 'app-foqus-list',
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class FoqusListComponent implements OnInit {
   isCollapsed = false;
+  foQusListName: string;
   foQusItems: FoqusItem[];
 
   foQusItemForm = new FormGroup({
@@ -20,8 +22,10 @@ export class FoqusListComponent implements OnInit {
   });
 
   constructor(
+    private foQusListService: FoqusListService,
     private foQusItemService: FoqusItemService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -29,7 +33,12 @@ export class FoqusListComponent implements OnInit {
   }
 
   getItems(): void {
-    this.foQusItemService.getItems()
+    const id = +this.route.snapshot.paramMap.get('id');
+
+    this.foQusListService.getList(id)
+      .subscribe(list => this.foQusListName = list.name);
+      
+    this.foQusItemService.getItems(id)
       .subscribe(items => this.foQusItems = items);
   }
 
@@ -80,7 +89,7 @@ export class FoqusListComponent implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['/foquslists']);
+    this.router.navigate(['/foquslist']);
   }
 
 }

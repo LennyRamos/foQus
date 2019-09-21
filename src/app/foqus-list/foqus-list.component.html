@@ -3,7 +3,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">FoQus List</h4>
+            <h4 class="card-title">{{foQusListName}}</h4>
             <form [formGroup]="foQusItemForm" (ngSubmit)="onSubmit()">
                 <label>task name:
                     <input type="text" formControlName="itemName" />
