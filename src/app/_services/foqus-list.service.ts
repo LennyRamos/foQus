@@ -24,4 +24,19 @@ export class FoqusListService {
         catchError(error => this.configService.handleError(error))
       );
   }
+<<<<<<< HEAD
+=======
+
+  /** GET foQus list by id. Will 404 if id not found */
+  getList(id: number): Observable<FoqusList> {
+    const url = `${this.foQusListUrl}/${id}`;
+
+    return this.http.get<FoqusList>(url)
+      .pipe(
+        tap(_ => console.log(`fetched list by id=${id}`)),
+        catchError(error => this.configService.handleError(error))
+      );
+  }
+
+>>>>>>> develop
 }

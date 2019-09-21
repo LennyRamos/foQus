@@ -12,7 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { FoqusListComponent } from './foqus-list/foqus-list.component';
 import { FoqusListsComponent } from './foqus-lists/foqus-lists.component';
 import { BrowseComponent } from './browse/browse.component';
-
+import { RegisterComponent } from './auth/register/register.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -20,7 +20,8 @@ const appRoutes: Routes = [
   { path: 'foquslist', component: FoqusListsComponent, canActivate: [AuthGuard] },
   { path: 'foquslist/:id', component: FoqusListComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
-  { path: 'browse', component: BrowseComponent}
+  { path: 'browse', component: BrowseComponent},
+  { path: 'register', component: RegisterComponent },
 ];
 
 @NgModule({
@@ -30,7 +31,8 @@ const appRoutes: Routes = [
     HomeComponent,
     FoqusListComponent,
     FoqusListsComponent,
-    BrowseComponent
+    BrowseComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

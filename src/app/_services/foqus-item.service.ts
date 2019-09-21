@@ -13,9 +13,11 @@ export class FoqusItemService {
 
   constructor(private http: HttpClient) { }
 
-  /** GET heroes from the server */
-  getItems(): Observable<FoqusItem[]> {
-    return this.http.get<FoqusItem[]>(this.url)
+  /** GET tasks by list id from the server  */
+  getItems(id: number): Observable<FoqusItem[]> {
+    const url = `${this.url}?listId=${id}`;
+
+    return this.http.get<FoqusItem[]>(url)
       .pipe(
         // tap(_ => this.log('fetched items')),
         tap(_ => console.log('fetched items')),
