@@ -1,11 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppComponent } from './app.component';
-
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './_services/in-memory-data.service';
 import { LoginComponent } from './auth/login/login.component';
@@ -14,13 +11,16 @@ import { AuthGuard } from './auth/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { FoqusListComponent } from './foqus-list/foqus-list.component';
 import { FoqusListsComponent } from './foqus-lists/foqus-lists.component';
+import { BrowseComponent } from './browse/browse.component';
+
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'foquslist', component: FoqusListsComponent, canActivate: [AuthGuard] },
   { path: 'foquslist/:id', component: FoqusListComponent, canActivate: [AuthGuard] },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'browse', component: BrowseComponent}
 ];
 
 @NgModule({
@@ -29,7 +29,8 @@ const appRoutes: Routes = [
     LoginComponent,
     HomeComponent,
     FoqusListComponent,
-    FoqusListsComponent
+    FoqusListsComponent,
+    BrowseComponent
   ],
   imports: [
     BrowserModule,
