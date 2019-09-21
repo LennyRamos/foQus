@@ -9,9 +9,9 @@ import { FoqusList } from '../_models/foqus-list';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const foQusLists: FoqusList[] = [
-      { id: 1, name: 'grocery list' },
-      { id: 2, name: 'notes' },
-      { id: 3, name: 'to-do' },
+      { id: 1, name: 'grocery list', isPrivate: false},
+      { id: 2, name: 'notes', isPrivate: true},
+      { id: 3, name: 'to-do', isPrivate: false },
     ];
 
     const foQusItems: FoqusItem[] = [
