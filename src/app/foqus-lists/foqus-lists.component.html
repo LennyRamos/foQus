@@ -1,7 +1,9 @@
 <main>
     <div class="card" *ngFor="let list of foQusLists; let i = index">
         <div class="card-body">
-            {{list.name}}
+            <a routerLink="/foquslist/{{list.id}}" class="stretched-link">
+                {{list.name}}
+            </a>
         </div>
     </div>
 </main>

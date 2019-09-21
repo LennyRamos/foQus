@@ -14,13 +14,15 @@ import { AuthGuard } from './auth/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { FoqusListComponent } from './foqus-list/foqus-list.component';
 import { FoqusListsComponent } from './foqus-lists/foqus-lists.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'foquslist', component: FoqusListsComponent, canActivate: [AuthGuard] },
   { path: 'foquslist/:id', component: FoqusListComponent, canActivate: [AuthGuard] },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
 ];
 
 @NgModule({
@@ -29,7 +31,8 @@ const appRoutes: Routes = [
     LoginComponent,
     HomeComponent,
     FoqusListComponent,
-    FoqusListsComponent
+    FoqusListsComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
