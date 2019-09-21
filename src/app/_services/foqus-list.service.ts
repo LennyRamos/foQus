@@ -24,8 +24,6 @@ export class FoqusListService {
         catchError(error => this.configService.handleError(error))
       );
   }
-<<<<<<< HEAD
-=======
 
   /** GET foQus list by id. Will 404 if id not found */
   getList(id: number): Observable<FoqusList> {
@@ -38,5 +36,4 @@ export class FoqusListService {
       );
   }
 
->>>>>>> develop
 }
