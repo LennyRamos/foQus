@@ -24,5 +24,4 @@ export class FoqusListService {
         catchError(error => this.configService.handleError(error))
       );
   }
-
 }

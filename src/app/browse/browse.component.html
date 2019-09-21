@@ -1,1 +1,23 @@
-<p>browse works!</p>
+<main>
+    <!-- <button (click)="goBack()">go back</button> -->
+
+    <div class="container">
+        <div class="container">
+            <h1>Browse</h1>
+            <!-- Search form -->
+            <form class="form-inline waves-light" mdbWavesEffect (ngSubmit)="search()">
+                <div class="md-form mt-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                </div>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+        <div class="container" *ngIf="false">
+            <h1>Results</h1>
+        </div>
+
+    </div>
+
+
+</main>

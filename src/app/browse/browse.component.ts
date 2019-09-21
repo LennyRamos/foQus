@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FoqusList } from '../_models/foqus-list';
+import { FoqusListService } from '../_services/foqus-list.service';
 
 @Component({
   selector: 'app-browse',
@@ -7,12 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BrowseComponent implements OnInit {
 
-  constructor() { }
+  searchResults: FoqusList[];
+
+  constructor(
+    private foqusList: FoqusListService
+  ) {
+
+   }
+
 
   ngOnInit() {
   }
 
+  getItems(): void {
+    this.foqusList.getLists()
+      .subscribe(items => this.searchResults = items);
+  }
+
   search() {
+    this.getItems();
+    console.log(this.searchResults);
     console.log('About to search this hoe');
   }
 }
