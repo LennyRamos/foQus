@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FoqusListService } from '../_services/foqus-list.service';
 import { FoqusListComponent } from '../foqus-list/foqus-list.component';
 import { FoqusList } from '../_models/foqus-list';
+import {FoqusListsComponent} from '../foqus-lists/foqus-lists.component';
 import { FormGroup, FormControl } from '@angular/forms';
 import { observable } from 'rxjs';
 
@@ -18,19 +19,22 @@ export class CreateListComponent implements OnInit {
     isPrivate: new FormControl('')
   });
 
-  constructor(private foqusListService: FoqusListService) { }
+  constructor(private foqusListService: FoqusListService, private foqusListsComponent: FoqusListsComponent) { }
 
   ngOnInit() {
   }
 
 
   createNewList() {
-    let name = this.foQusNewListForm.value.listName.trim();
-    let isPrivate = this.foQusNewListForm.value.isPrivate;
+    const name = this.foQusNewListForm.value.listName.trim();
+    const isPrivate = this.foQusNewListForm.value.isPrivate;
     if (!name) { return; }
 
     let newList: FoqusList = { name, isPrivate };
-    this.foqusListService.addNewList(newList).subscribe(res => console.log(res));
+    this.foqusListService.addNewList(newList)
+    .subscribe(res => this.foqusListsComponent.addNewList(res));
+
+    console.log('New list addded');
   }
 
 }

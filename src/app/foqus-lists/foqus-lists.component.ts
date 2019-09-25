@@ -22,4 +22,11 @@ export class FoqusListsComponent implements OnInit {
       .subscribe(lists => this.foQusLists = lists);
   }
 
+  /**
+   * Adds a new list to the array after a successful Post call
+   */
+  addNewList(newList: FoqusList): void {
+    this.foQusLists.push(newList);
+  }
+
 }
