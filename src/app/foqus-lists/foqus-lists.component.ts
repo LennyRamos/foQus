@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FoqusList } from '../_models/foqus-list';
 import { FoqusListService } from '../_services/foqus-list.service';
+import { CreateListComponent } from '../create-list/create-list.component';
 
 @Component({
   selector: 'app-foqus-lists',

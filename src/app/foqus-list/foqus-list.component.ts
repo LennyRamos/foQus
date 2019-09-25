@@ -37,7 +37,7 @@ export class FoqusListComponent implements OnInit {
 
     this.foQusListService.getList(id)
       .subscribe(list => this.foQusListName = list.name);
-      
+
     this.foQusItemService.getItems(id)
       .subscribe(items => this.foQusItems = items);
   }
@@ -91,5 +91,4 @@ export class FoqusListComponent implements OnInit {
   goBack(): void {
     this.router.navigate(['/foquslist']);
   }
-
 }

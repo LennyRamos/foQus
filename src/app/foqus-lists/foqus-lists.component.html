@@ -1,8 +1,13 @@
 <main>
+    <app-create-list></app-create-list>
+
     <div class="card" *ngFor="let list of foQusLists; let i = index">
+        <div class="card-header">
+            {{list.name}}
+        </div>
         <div class="card-body">
             <a routerLink="/foquslist/{{list.id}}" class="stretched-link">
-                {{list.name}}
+                List {{list.id}}
             </a>
         </div>
     </div>

@@ -29,8 +29,7 @@
                 <li *ngIf="!item.isComplete">
                     <input type="checkbox" (change)="iscompleted(item)" />
 
-                    <a data-toggle="collapse" href="{{'#collapseExample'+item.id}}" role="button" aria-expanded="false"
-                        aria-controls="collapseExample">
+                    <a data-toggle="collapse" href="{{'#collapseExample'+item.id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
                         {{item.name}}
                     </a>
                     <button class="delete" title="delete item" (click)="delete(item)">x</button>
@@ -52,8 +51,7 @@
                 <li *ngIf="item.isComplete">
                     <input type="checkbox" (change)="iscompleted(item)" checked />
 
-                    <a data-toggle="collapse" href="{{'#collapseExample'+item.id}}" role="button" aria-expanded="false"
-                        aria-controls="collapseExample">
+                    <a data-toggle="collapse" href="{{'#collapseExample'+item.id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
                         {{item.name}}
                     </a>
                     <button class="delete" title="delete item" (click)="delete(item)">x</button>
