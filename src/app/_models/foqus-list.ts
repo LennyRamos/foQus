@@ -1,5 +1,5 @@
 export class FoqusList {
-    id: number;
+    id?: number;
     name: string;
     isPrivate: boolean;
 }
