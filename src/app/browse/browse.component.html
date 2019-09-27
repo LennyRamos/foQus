@@ -17,14 +17,19 @@
             <h1>Results</h1>
 
             <div class="card" *ngFor="let list of searchResults; let i = index">
-                <div class="card-body">
+
+                <div class="card-header">
                     {{list.name}}
                 </div>
+
+                <div class="card-body">
+                    <p class="card-text bg-light" style="transform: rotate(0);">
+                        <a routerLink="/foquslist/{{list.id}}" class="stretched-link" style="transform: rotate(0);">
+                            List {{list.id}}
+                        </a>
+                    </p>
+                </div>
             </div>
-
         </div>
-
     </div>
-
-
 </main>

@@ -1,15 +1,25 @@
 <main>
     <app-create-list></app-create-list>
 
+    <br>
+
     <div class="card" *ngFor="let list of foQusLists; let i = index">
         <div class="card-header">
             {{list.name}}
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteListModal" style="float: right;">
+            Delete
+            </button>
+
+            <app-delete-list [list]="list"></app-delete-list>
         </div>
 
         <div class="card-body">
-            <a routerLink="/foquslist/{{list.id}}" class="stretched-link">
-                List {{list.id}}
-            </a>
+            <p class="card-text bg-light" style="transform: rotate(0);">
+                <a routerLink="/foquslist/{{list.id}}" class="stretched-link" style="transform: rotate(0);">
+                    List {{list.id}}
+                </a>
+            </p>
         </div>
     </div>
 </main>

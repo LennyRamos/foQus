@@ -14,6 +14,7 @@ import { FoqusListsComponent } from './foqus-lists/foqus-lists.component';
 import { BrowseComponent } from './browse/browse.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { CreateListComponent } from './create-list/create-list.component';
+import { DeleteListComponent } from './delete-list/delete-list.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
     FoqusListsComponent,
     BrowseComponent,
     RegisterComponent,
-    CreateListComponent
+    CreateListComponent,
+    DeleteListComponent
   ],
   imports: [
     BrowserModule,
