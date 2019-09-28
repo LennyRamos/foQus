@@ -1,23 +1,32 @@
-<!-- Modal -->
-<div class="backdrop"></div>
-<div class="modal fade" id="deleteListModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Delete List</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-            </div>
-            <div class="modal-body">
+<div>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-danger" data-toggle="modal" (click)="getListToBeDeletedID(list.id)" data-target="#deleteListModal" style="float: right;">
+    Delete {{list.name}}
+    </button>
 
-                <p>Are you sure you want to delete : {{list.name}} ? </p>
+    <!-- Modal -->
+    <div class="backdrop"></div>
+    <div class="modal fade" id="deleteListModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-danger" (click)="deleteList(list.id)">Delete</button>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Delete ??</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
                 </div>
 
+                <div class="modal-body">
+
+                    <p>Are you sure you want to delete ? {{list.name}}</p>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger" (click)="deleteList()">Delete</button>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>

@@ -1,17 +1,12 @@
 <main>
     <app-create-list></app-create-list>
-
     <br>
 
     <div class="card" *ngFor="let list of foQusLists; let i = index">
         <div class="card-header">
             {{list.name}}
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteListModal" style="float: right;">
-            Delete
-            </button>
-
             <app-delete-list [list]="list"></app-delete-list>
+
         </div>
 
         <div class="card-body">
