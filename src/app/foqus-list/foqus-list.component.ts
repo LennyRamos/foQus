@@ -86,13 +86,14 @@ export class FoqusListComponent implements OnInit {
 
     console.log('item moved to done');
   }
+
   /**
    * Edit the properties of the list
    */
   editListProperties(): void {
     const id = +this.route.snapshot.paramMap.get('id');
 
-    
+    const listToUpdate = this.foQusListService.updateListRecord(id);
   }
 
   goBack(): void {

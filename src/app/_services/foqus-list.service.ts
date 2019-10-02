@@ -42,8 +42,8 @@ export class FoqusListService {
    */
   addNewList(foqusList: FoqusList ): Observable<FoqusList> {
     console.log('This is about to post');
-    return this.http.post<FoqusList>(this.foQusListUrl, foqusList).pipe(
-      // Write error handling
+    return this.http.put<FoqusList>(this.foQusListUrl, foqusList).pipe(
+      catchError(error => this.configService.handleError(error))
     );
   }
 
@@ -54,7 +54,21 @@ export class FoqusListService {
     const url = `${this.foQusListUrl}/${id}`;
 
     return this.http.delete(url).pipe(
-      // Write error handling
+      catchError(error => this.configService.handleError(error))
+    );
+  }
+
+  /**
+   * At least one of the paramateres will be not null.
+   * If null then there is no change to that property.
+   *
+   * @param foqusList object to update in database
+   */
+  updateListRecord(foqusList: FoqusList): Observable<FoqusList> {
+    const url = `${this.foQusListUrl}/${foqusList.id}`;
+
+    return this.http.put<FoqusList>(url, foqusList).pipe(
+      catchError(error => this.configService.handleError(error))
     );
   }
 
