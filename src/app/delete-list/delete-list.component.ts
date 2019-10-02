@@ -22,15 +22,16 @@ export class DeleteListComponent implements OnInit {
    * For deleting a list item
    * @param id the id of the list to be deleted
    */
-  private deleteList() {
-    console.log(this.list.id);
+  // private deleteList(id: number) {
 
-    this.foqusListService.removeListItem(this.list.id)
-    .subscribe(res => console.log(res));
+  //   this.foqusListService.removeListItem(id)
+  //   .subscribe(res => console.log(res));
 
-    console.log('Just delete list');
-    console.log(this.list.id);
-  }
+  //   this.foqusListsComponent.removeList(id);
+
+  //   console.log('Just delete list');
+  //   console.log(this.list.id);
+  // }
 
   /**
    * A test to make sure button passes id
