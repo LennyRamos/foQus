@@ -4,20 +4,22 @@
 
     <div class="card" *ngFor="let list of foQusLists; let i = index">
         <div class="card-header">
-            {{list.name}}
-            <button type="button" class="btn btn-danger" (click)="deleteList(list)" style="float: right;">
+            <div class="float-left">
+                <h5 class="card-title">{{list.name}}</h5>
+                <h6 class="card-subtitle mb-2 text muted">isPrivate : {{list.isPrivate}}</h6>
+            </div>
+            <button type="button" class="btn btn-danger float-right" (click)="deleteList(list)">
             Delete
             </button>
 
         </div>
 
-        <div class="card-body">
-            <p class="card-text bg-light" style="transform: rotate(0);">
-                <a routerLink="/foquslist/{{list.id}}" class="stretched-link" style="transform: rotate(0);">
-                    List {{list.id}}
-                </a>
-            </p>
-        </div>
+        <a routerLink="/foquslist/{{list.id}}">
+            <div class="card-body">
+                <p class="card-text bg-transparent">List {{list.id}}</p>
+            </div>
+        </a>
+
     </div>
 </main>
 

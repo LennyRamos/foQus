@@ -54,8 +54,8 @@ export class FoqusListComponent implements OnInit {
    * Used when adding a new entry into the task list
    */
   onSubmit() {
-    let name = this.foQusItemForm.value.itemName.trim();
-    let description = this.foQusItemForm.value.itemDescription.trim();
+    const name = this.foQusItemForm.value.itemName.trim();
+    const description = this.foQusItemForm.value.itemDescription.trim();
     if (!name) { return; }
 
     this.foQusItems.push({ name, description } as FoqusItem);
@@ -84,8 +84,15 @@ export class FoqusListComponent implements OnInit {
       item.isComplete = true;
     }
 
-
     console.log('item moved to done');
+  }
+  /**
+   * Edit the properties of the list
+   */
+  editListProperties(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+
+    
   }
 
   goBack(): void {
