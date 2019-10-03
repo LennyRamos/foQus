@@ -5,20 +5,28 @@ import { FoqusItemService } from '../_services/foqus-item.service';
 import { Location } from '@angular/common';
 import { Router, Route, ActivatedRoute } from '@angular/router';
 import { FoqusListService } from '../_services/foqus-list.service';
+import { FoqusList } from '../_models/foqus-list';
 
 @Component({
   selector: 'app-foqus-list',
   templateUrl: './foqus-list.component.html',
   styleUrls: ['./foqus-list.component.css']
 })
+
 export class FoqusListComponent implements OnInit {
   isCollapsed = false;
   foQusListName: string;
   foQusItems: FoqusItem[];
+  private updateInfo = false;
 
   foQusItemForm = new FormGroup({
     itemName: new FormControl(''),
     itemDescription: new FormControl('')
+  });
+
+  foQusItemUpdateForm = new FormGroup({
+    itemName: new FormControl(''),
+    isPrivate: new FormControl('')
   });
 
   constructor(
@@ -89,11 +97,37 @@ export class FoqusListComponent implements OnInit {
 
   /**
    * Edit the properties of the list
+   * closes and opens form and sends update
+   * if new information has be inputed
    */
-  editListProperties(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+  updateListProperties(): void {
 
-    const listToUpdate = this.foQusListService.updateListRecord(id);
+    this.updateInfo = !this.updateInfo;
+
+    if (this.updateInfo === false) {
+      return;
+    }
+
+    this.sendUpdate();
+
+    // const listToUpdate = this.foQusListService.updateListRecord(id);
+  }
+
+  /**
+   * Send the list info update to the backend
+   */
+  private sendUpdate() {
+    const id = +this.route.snapshot.paramMap.get('id');
+    // TODO get the list info and then compare to new info 
+
+    // list: FoqusList = this.foQusListService.getList(id)
+    //   .subscribe(list => this.foQusListName = list.name);
+
+    const name = this.foQusItemUpdateForm.value.itemName.trim();
+    const isPrivate = this.foQusItemUpdateForm.value.isPrivate;
+    if (!name && !isPrivate) { return; }
+
+    console.log('got the update');
   }
 
   goBack(): void {

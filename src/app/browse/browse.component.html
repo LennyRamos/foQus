@@ -22,13 +22,11 @@
                     {{list.name}}
                 </div>
 
-                <div class="card-body">
-                    <p class="card-text bg-light" style="transform: rotate(0);">
-                        <a routerLink="/foquslist/{{list.id}}" class="stretched-link" style="transform: rotate(0);">
-                            List {{list.id}}
-                        </a>
-                    </p>
-                </div>
+                <a routerLink="/foquslist/{{list.id}}">
+                    <div class="card-body">
+                        <p class="card-text bg-transparent">List {{list.id}}</p>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
