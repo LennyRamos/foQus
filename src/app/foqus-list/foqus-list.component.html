@@ -4,7 +4,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">{{foQusListName}}</h4>
+            <h4 class="card-title">{{foQusListName}} {{isPrivate}}</h4>
 
             <form [formGroup]="foQusItemForm" (ngSubmit)="onSubmit()">
                 <label>task name:

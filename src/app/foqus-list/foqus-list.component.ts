@@ -26,7 +26,7 @@ export class FoqusListComponent implements OnInit {
 
   foQusItemUpdateForm = new FormGroup({
     itemName: new FormControl(''),
-    isPrivate: new FormControl(false)
+    isPrivate: new FormControl('')
   });
 
   constructor(
@@ -44,7 +44,10 @@ export class FoqusListComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
 
     this.foQusListService.getList(id)
-      .subscribe(list => this.foQusListName = list.name);
+      .subscribe(list => {
+        this.foQusListName = list.name;
+        this.foQusItemUpdateForm.setValue({itemName: list.name, isPrivate: list.isPrivate});
+      });
 
     this.foQusItemService.getItems(id)
       .subscribe(items => this.foQusItems = items);
@@ -123,26 +126,21 @@ export class FoqusListComponent implements OnInit {
 
     this.foQusListService.getList(id)
     .subscribe(list => {
-        if (list.name === '') {
+        if (name === '') {
           return;
         }
 
         if (list.name === name && list.isPrivate === isPrivate) {
           return;
         } else {
+
           const updateInfo: FoqusList = {id, name, isPrivate};
-
-          this.foQusListService.updateListRecord(updateInfo);
+          this.foQusListService.updateListRecord(updateInfo).subscribe(() => this.updateListProperties());
           this.foQusListName = name;
-
-          this.foQusListService.getList(id)
-          .subscribe(list2 => console.log('new list name ' + list2.name + ' isPrivate? ' + list2.isPrivate));
-          this.updateInfo = !this.updateInfo;
         }
 
       });
 
-    console.log('got the update');
   }
 
   goBack(): void {
