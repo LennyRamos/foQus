@@ -1,6 +1,64 @@
-<h2>LOGIN</h2>
-<p>{{message}}</p>
-<p>
-  <button (click)="login()"  *ngIf="!authService.isLoggedIn">Login</button>
-  <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
-</p>
+<!-- Login Card -->
+<div class="card mx-auto" *ngIf="!authService.isLoggedIn" style="max-width: 540px;">
+    <!-- Default form login -->
+    <form class="text-center border border-light p-5">
+
+        <h5 class="card-header info-color white-text text-center py-4">
+            <strong>Log in</strong>
+        </h5>
+        <br>
+
+        <form [formGroup]="loginCredential" (ngSubmit)="tryLogin()">
+            <!-- Email -->
+            <input type="email" formControlName="username" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+
+            <!-- Password -->
+            <input type="password" formControlName="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+        </form>
+
+
+        <div class="d-flex justify-content-around">
+            <div>
+                <!-- Remember me -->
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+                    <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
+                </div>
+            </div>
+            <div>
+                <!-- Forgot password -->
+                <!-- TODO Add router link  -->
+                <a href="">Forgot password?</a>
+            </div>
+        </div>
+
+        <!-- Sign in button -->
+        <button (click)="login()" class="btn btn-info btn-block my-4" type="submit">Sign in</button>
+        <p>{{message}}</p>
+
+        <!-- Register -->
+        <p>Not a member?
+            <a routerLink="/register" routerLinkActive="active"> Register </a>
+        </p>
+
+        <!-- Social login -->
+        <!-- <p>or sign in with:</p>
+
+        <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
+        <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
+        <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
+        <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a> -->
+
+    </form>
+    <!-- Default form login -->
+</div>
+
+<!-- LogOut Card -->
+<div class="card" *ngIf="authService.isLoggedIn">
+    <h5 class="card-header">
+        <strong>Log-out</strong>
+        <p>{{message}}</p>
+    </h5>
+
+    <button (click)="logout()">Logout</button>
+</div>
