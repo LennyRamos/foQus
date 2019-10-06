@@ -1,7 +1,7 @@
 <!-- Login Card -->
-<div class="card" *ngIf="!authService.isLoggedIn" style="max-width: 540px;">
+<div class="card mx-auto" *ngIf="!authService.isLoggedIn" style="max-width: 540px;">
     <!-- Default form login -->
-    <form class="text-center border border-light p-5" action="#!">
+    <form class="text-center border border-light p-5">
 
         <h5 class="card-header info-color white-text text-center py-4">
             <strong>Log in</strong>
@@ -27,6 +27,7 @@
             </div>
             <div>
                 <!-- Forgot password -->
+                <!-- TODO Add router link  -->
                 <a href="">Forgot password?</a>
             </div>
         </div>
@@ -37,8 +38,7 @@
 
         <!-- Register -->
         <p>Not a member?
-            <button click="goToRegisterPage()" class="btn btn-info my-4">Register</button>
-            <!-- <a href="">Register</a> -->
+            <a routerLink="/register" routerLinkActive="active"> Register </a>
         </p>
 
         <!-- Social login -->
