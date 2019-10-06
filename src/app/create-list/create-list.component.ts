@@ -13,7 +13,7 @@ export class CreateListComponent implements OnInit {
 
   foQusNewListForm = new FormGroup({
     listName: new FormControl(''),
-    isPrivate: new FormControl('')
+    isPrivate: new FormControl(true)
   });
 
   constructor(private foqusListService: FoqusListService, private foqusListsComponent: FoqusListsComponent) { }
