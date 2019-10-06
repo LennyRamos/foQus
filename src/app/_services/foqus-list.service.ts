@@ -67,7 +67,7 @@ export class FoqusListService {
   updateListRecord(foqusList: FoqusList): Observable<FoqusList> {
     const url = `${this.foQusListUrl}/${foqusList.id}`;
 
-    return this.http.put<FoqusList>(url, foqusList).pipe(
+    return this.http.put<FoqusList>(this.foQusListUrl, foqusList).pipe(
       catchError(error => this.configService.handleError(error))
     );
   }

@@ -78,7 +78,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form [formGroup]="foQusItemUpdateForm" (ngSubmit)="onSubmit()">
+                    <form [formGroup]="foQusItemUpdateForm" (ngSubmit)="sendUpdate()">
                         <label>list name:
                             <input type="text" formControlName="itemName" />
                         </label>
