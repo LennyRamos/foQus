@@ -5,20 +5,28 @@ import { FoqusItemService } from '../_services/foqus-item.service';
 import { Location } from '@angular/common';
 import { Router, Route, ActivatedRoute } from '@angular/router';
 import { FoqusListService } from '../_services/foqus-list.service';
+import { FoqusList } from '../_models/foqus-list';
 
 @Component({
   selector: 'app-foqus-list',
   templateUrl: './foqus-list.component.html',
   styleUrls: ['./foqus-list.component.css']
 })
+
 export class FoqusListComponent implements OnInit {
   isCollapsed = false;
   foQusListName: string;
   foQusItems: FoqusItem[];
+  private updateInfo = false;
 
   foQusItemForm = new FormGroup({
     itemName: new FormControl(''),
     itemDescription: new FormControl('')
+  });
+
+  foQusItemUpdateForm = new FormGroup({
+    itemName: new FormControl(''),
+    isPrivate: new FormControl('')
   });
 
   constructor(
@@ -36,7 +44,10 @@ export class FoqusListComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
 
     this.foQusListService.getList(id)
-      .subscribe(list => this.foQusListName = list.name);
+      .subscribe(list => {
+        this.foQusListName = list.name;
+        this.foQusItemUpdateForm.setValue({itemName: list.name, isPrivate: list.isPrivate});
+      });
 
     this.foQusItemService.getItems(id)
       .subscribe(items => this.foQusItems = items);
@@ -54,8 +65,8 @@ export class FoqusListComponent implements OnInit {
    * Used when adding a new entry into the task list
    */
   onSubmit() {
-    let name = this.foQusItemForm.value.itemName.trim();
-    let description = this.foQusItemForm.value.itemDescription.trim();
+    const name = this.foQusItemForm.value.itemName.trim();
+    const description = this.foQusItemForm.value.itemDescription.trim();
     if (!name) { return; }
 
     this.foQusItems.push({ name, description } as FoqusItem);
@@ -84,8 +95,52 @@ export class FoqusListComponent implements OnInit {
       item.isComplete = true;
     }
 
-
     console.log('item moved to done');
+  }
+
+  /**
+   * Edit the properties of the list
+   * closes and opens form and sends update
+   * if new information has be inputed
+   */
+  updateListProperties(): void {
+
+    this.updateInfo = !this.updateInfo;
+
+    if (this.updateInfo === false) {
+      return;
+    }
+
+    // const listToUpdate = this.foQusListService.updateListRecord(id);
+  }
+
+  /**
+   * Send the list info update to the backend
+   */
+  private sendUpdate() {
+    const id = +this.route.snapshot.paramMap.get('id');
+    // TODO get the list info and then compare to new info
+
+    const name = this.foQusItemUpdateForm.value.itemName.trim();
+    const isPrivate = this.foQusItemUpdateForm.value.isPrivate;
+
+    this.foQusListService.getList(id)
+    .subscribe(list => {
+        if (name === '') {
+          return;
+        }
+
+        if (list.name === name && list.isPrivate === isPrivate) {
+          return;
+        } else {
+
+          const updateInfo: FoqusList = {id, name, isPrivate};
+          this.foQusListService.updateListRecord(updateInfo).subscribe(() => this.updateListProperties());
+          this.foQusListName = name;
+        }
+
+      });
+
   }
 
   goBack(): void {

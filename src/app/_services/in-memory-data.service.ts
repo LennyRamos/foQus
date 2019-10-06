@@ -20,6 +20,8 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 13, name: 'carrots', description: 'stick em in Lenny\'s ass', isComplete: true, listId: 1 },
       { id: 14, name: 'life is short', description: 'enjoy it', isComplete: false, listId: 2 },
       { id: 15, name: 'put in dat', description: 'work', isComplete: false, listId: 2 },
+      { id: 15, name: 'bang eric', description: 'love it', isComplete: false, listId: 3 },
+
     ];
 
     return { foQusLists, foQusItems };

@@ -1,9 +1,11 @@
 <main>
     <button (click)="goBack()">go back</button>
+    <button (click)="updateListProperties()">Edit</button>
 
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">{{foQusListName}}</h4>
+            <h4 class="card-title">{{foQusListName}} {{isPrivate}}</h4>
+
             <form [formGroup]="foQusItemForm" (ngSubmit)="onSubmit()">
                 <label>task name:
                     <input type="text" formControlName="itemName" />
@@ -62,6 +64,34 @@
                     </div>
                 </li>
 
+            </div>
+        </div>
+
+
+        <div class="container" *ngIf="updateInfo">
+
+            <div class="card">
+
+                <div class="card-header">
+                    <h5 class="card-title">Update List Information</h5>
+                    <h6 class="card-subtitle mb-2 text muted">Need to be different fields and non empty</h6>
+                </div>
+
+                <div class="card-body">
+                    <form [formGroup]="foQusItemUpdateForm" (ngSubmit)="sendUpdate()">
+                        <label>list name:
+                            <input type="text" formControlName="itemName" />
+                        </label>
+
+                        <label>isPrivate:
+                            <input type="checkBox" formControlName="isPrivate" />
+                        </label>
+                        <!-- (click) passes input value to add() and then clears the input -->
+                        <button type="submit">
+                            Update
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
